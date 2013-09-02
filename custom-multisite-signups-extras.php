@@ -27,17 +27,17 @@ function my_extra_fields( $html ) {
 	$extra_fields[] = '<label>Extra Field</label>';
 	$extra_fields[] = '<input id="extra_field1" name="extra_field1" type="text" value="' . $extra_field1 . '" />';
 
-	$html = $html . implode( "\n", $extra_fields );
+	$html .=  implode( "\n", $extra_fields );
 	echo $html;
 }
 
 function my_extra_fields_selectors( $selectors ) {
-	$selectors = $selectors . ', .mu_register #extra_field1';
+	$selectors .= ', .mu_register #extra_field1';
 	return $selectors;
 }
 
 function my_extra_fields_css( $css ) {
-	$css = '/* CSS comment */';
+	$css .= ' /* CSS comment */ ';
 	return $css;
 }
 
