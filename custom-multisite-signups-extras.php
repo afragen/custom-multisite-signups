@@ -15,6 +15,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 if( class_exists( 'Custom_Multisite_Signups') ) {
 	add_filter( 'cms_add_extra_signup_fields', 'my_extra_fields' );
 	add_filter( 'cms_extra_fields_css_selectors', 'my_extra_fields_selectors' );
+	add_filter( 'cms_extra_fields_css', 'my_extra_fields_css' );
 	add_filter( 'cms_wpmu_validate_user_signup', 'my_validate_user_signup' );
 	add_action( 'cms_extra_signup_meta', 'my_cms_extra_signup_meta' );
 	add_filter( 'cms_show_extra_profile_fields', 'my_show_extra_profile_fields' );
@@ -33,6 +34,11 @@ function my_extra_fields( $html ) {
 function my_extra_fields_selectors( $selectors ) {
 	$selectors = $selectors . ', .mu_register #extra_field1';
 	return $selectors;
+}
+
+function my_extra_fields_css( $css ) {
+	$css = '/* CSS comment */';
+	return $css;
 }
 
 function my_validate_user_signup( $result ) {
