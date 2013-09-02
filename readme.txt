@@ -13,7 +13,7 @@ Framework for adding custom registration info during WP Multisite registration.
 
 == Description ==
 
-This plugin adds first name, last name and sets display name during registration for WP Multisite site. Plenty of hooks are included so additional registration info and additional custom fields may be added. This can be added using another plugin, such as the custom-multisite-signups-extra.php plugin that is included here as an example.
+This plugin adds first name, last name and sets display name during registration for WP Multisite site. Plenty of hooks are included so additional registration info and additional custom fields may be added. This can be added using another plugin, such as the custom-multisite-signups-extra.php file that is included here as an example.
 
 == Installation ==
 

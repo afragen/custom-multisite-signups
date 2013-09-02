@@ -14,6 +14,9 @@ License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
+//Load plugin
+new Custom_Multisite_Signups();
+
 
 class Custom_Multisite_Signups {
 
@@ -129,14 +132,14 @@ class Custom_Multisite_Signups {
 	 */
 	public function _add_signup_meta( $meta = array() ) {
 
-		$fname = $this->ucname( $_POST['first_name'] );
-		$lname = $this->ucname( $_POST['last_name'] );
+		$fname = sanitize_text_field( $this->ucname( $_POST['first_name'] ) );
+		$lname = sanitize_text_field( $this->ucname( $_POST['last_name'] ) );
 		
 		// create an array of custom meta fields
 		$meta['custom_usermeta'] = array(
-										'first_name'   => $fname,
-										'last_name'    => $lname,
-										'display_name' => $fname . ' ' . $lname,
+									'first_name'   => $fname,
+									'last_name'    => $lname,
+									'display_name' => $fname . ' ' . $lname,
 									);
 		if( has_filter( 'cms_extra_signup_meta') )
 			$meta = $meta['custom_usermeta'] + apply_filters( 'cms_extra_signup_meta', $meta );
@@ -158,8 +161,8 @@ class Custom_Multisite_Signups {
 			update_user_meta( $user_id, $key, $value );
 		}
 		wp_update_user( array(
-							'ID'           => $user_id,
-							'display_name' => $meta['display_name'],
+						'ID'           => $user_id,
+						'display_name' => $meta['display_name'],
 						)
 					);
 
@@ -199,7 +202,4 @@ class Custom_Multisite_Signups {
 	}
 
 
-
 } //end class
-
-new Custom_Multisite_Signups();
