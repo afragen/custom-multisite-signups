@@ -65,14 +65,14 @@ class Custom_Multisite_Signups {
 			echo $selectors;
 		}
 		
-		$css = ' { font-size: 24px; margin: 5px 0; width: 100%; }';
+		echo ' { ';
+		$css = 'font-size: 24px; margin: 5px 0; width: 100%;';
 		if( has_filter( 'cms_extra_fields_css' ) ) {
 			echo apply_filters( 'cms_extra_fields_css', $css );
 		} else {
 			echo $css;
 		}
-		
-		echo "\n", '</style>', "\n";
+		echo ' }', "\n", '</style>', "\n";
 		
 		$first_name = isset( $_REQUEST['first_name'] ) ? (string) $_REQUEST['first_name'] : '';
 		$html[] = '<label>First Name</label>';
