@@ -5,7 +5,7 @@ Plugin Name: Custom Multisite Signups Extras
 Description: This plugin adds custom registration data using hooks to the Custom Multisite Signups plugin.
 Requires at least: 3.4
 Tested up to: 3.6
-Version: 0.1
+Version: 0.1.0
 Author: Andy Fragen
 Author URI: http://thefragens.com
 License: GNU General Public License v2
