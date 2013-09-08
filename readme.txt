@@ -5,7 +5,7 @@ Tested up to: 3.6
 Plugin URI: https://github.com/afragen/custom-multisite-signups
 GitHub Plugin URI: https://github.com/afragen/custom-multisite-signups
 Stable tag: master
-Version: 0.1
+Version: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Framework for adding custom registration info during WP Multisite registration.
 
 == Description ==
 
-This plugin adds first name, last name and sets display name during registration for WP Multisite site. Plenty of hooks are included so additional registration info and additional custom fields may be added. This can be added using another plugin, such as the custom-multisite-signups-extra.php file that is included here as an example.
+This plugin adds first name, last name and sets display name during registration for WP Multisite site. Plenty of hooks are included so additional registration info and additional custom fields may be added. This can be added using another plugin. The custom-multisite-signups-extra.php file that is included here as an example.
 
 == Installation ==
 
@@ -27,6 +27,6 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 0.1 =
+= 0.1.0 =
 * Initial commit
 
