@@ -7,7 +7,7 @@ GitHub Plugin URI: https://github.com/afragen/custom-multisite-signups
 Description: This plugin adds custom registration data and maybe other things to WP Mulitsite.
 Requires at least: 3.4
 Tested up to: 3.6
-Version: 0.1
+Version: 0.1.0
 Author: Andy Fragen
 Author URI: http://stsps.org
 License: GNU General Public License v2
@@ -17,6 +17,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 //Load plugin
 new Custom_Multisite_Signups();
 
+if ( class_exists( 'Custom_Multisite_Signups_Extras' ) )
+	new Custom_Multisite_Signups_Extras();
 
 class Custom_Multisite_Signups {
 
@@ -41,13 +43,13 @@ class Custom_Multisite_Signups {
 	*/
 	private function ucname( $string ) {
 		$string =ucwords( strtolower( $string ) );
-		foreach( array( '-', '\'' ) as $delimiter) {
-			if( strpos( $string, $delimiter ) !== false )
+		foreach ( array( '-', '\'' ) as $delimiter) {
+			if ( false !== strpos( $string, $delimiter ) )
 				$string = implode( $delimiter, array_map( 'ucfirst', explode( $delimiter, $string ) ) );
 		}
 		return $string;
 	}
-	
+
 	/**
 	 * Add extra registration fields
 	 *
@@ -56,18 +58,18 @@ class Custom_Multisite_Signups {
 	 * @filter returns string
 	 */
 	public function _signup_extra_fields( $errors ) {
-	
+
 		echo  "\n", '<style>', "\n";
 		$selectors = '.mu_register #first_name, .mu_register #last_name';
-		if( has_filter( 'cms_extra_fields_css_selectors' ) ) {
+		if ( has_filter( 'cms_extra_fields_css_selectors' ) ) {
 			echo apply_filters( 'cms_extra_fields_css_selectors', $selectors );
 		} else {
 			echo $selectors;
 		}
-		
+
 		echo ' { ';
 		$css = 'font-size: 24px; margin: 5px 0; width: 100%;';
-		if( has_filter( 'cms_extra_fields_css' ) ) {
+		if ( has_filter( 'cms_extra_fields_css' ) ) {
 			echo apply_filters( 'cms_extra_fields_css', $css );
 		} else {
 			echo $css;
@@ -84,7 +86,7 @@ class Custom_Multisite_Signups {
 		$html[] = '';
 		$html = implode( "\n", $html );
 
-		if( has_filter( 'cms_add_extra_signup_fields' ) ) {
+		if ( has_filter( 'cms_add_extra_signup_fields' ) ) {
 			echo apply_filters( 'cms_add_extra_signup_fields', $html );			
 		} else {
 			echo $html;
@@ -101,28 +103,28 @@ class Custom_Multisite_Signups {
 	*/
 	public function _wpmu_validate_user_signup( $result ) {
 		
-		if( empty( $_POST['first_name'] ) ) {
+		if ( empty( $_POST['first_name'] ) ) {
 			$result['errors']->add( 'first_name', __( 'You must include a first name.' ) );
 			echo '<p class="error">', $result['errors']->get_error_message('first_name'), '</p>';
 		}
-		
-		if( empty( $_POST['last_name'] ) ) {
+
+		if ( empty( $_POST['last_name'] ) ) {
 			$result['errors']->add( 'last_name', __( 'You must include a last name.' ) );
 			echo '<p class="error">', $result['errors']->get_error_message('last_name'), '</p>';
 		}
-		
-		if( preg_match( '/[^-a-zA-Z]/', $_POST['first_name'] ) or preg_match( '/[^-a-zA-Z]/', $_POST['last_name'] ) ) {
+
+		if ( preg_match( '/[^-a-zA-Z]/', $_POST['first_name'] ) or preg_match( '/[^-a-zA-Z]/', $_POST['last_name'] ) ) {
 			$result['errors']->add( 'name', __( 'Names may only contain letters or hyphens.' ) );
 			echo '<p class="error">', $result['errors']->get_error_message('name'), '</p>';
 		}
 
-		if( has_filter( 'cms_wpmu_validate_user_signup' ) ) {
+		if ( has_filter( 'cms_wpmu_validate_user_signup' ) ) {
 			return apply_filters( 'cms_wpmu_validate_user_signup', $result );
 		} else {
 			return $result;
 		}
 	}
-	
+
 	/**
 	 * Add values to wp_signups table
 	 *
@@ -141,7 +143,7 @@ class Custom_Multisite_Signups {
 									'last_name'    => $lname,
 									'display_name' => $fname . ' ' . $lname,
 									);
-		if( has_filter( 'cms_extra_signup_meta') )
+		if ( has_filter( 'cms_extra_signup_meta') )
 			$meta = $meta['custom_usermeta'] + apply_filters( 'cms_extra_signup_meta', $meta );
 
 		return $meta;
@@ -154,7 +156,7 @@ class Custom_Multisite_Signups {
 	* @param ($meta) array of key,value pairs.
 	*/
 	public function insert_meta_on_activation( $user_id, $email, $meta ) {
-	
+
 		// loop through array of custom meta fields
 		foreach ( $meta as $key => $value ) {
 			// and set each one as a meta field
@@ -167,7 +169,7 @@ class Custom_Multisite_Signups {
 					);
 
 	}
-	
+
 	/**
 	 * Add additional custom field to profile page
 	 *
@@ -177,11 +179,11 @@ class Custom_Multisite_Signups {
 	public function show_extra_profile_fields ( $user ) {
 
 		echo "\n", '<h3>', _e( 'Extra Profile Info'), '</h3>', "\n", '<table class="form-table"><tr>', "\n";
-		
+
 		echo apply_filters( 'cms_show_extra_profile_fields', $user );
-		
+
 		echo '</td>', "\n", '</tr>', '</table>', "\n";
-		
+
 	}
 
 	/**
@@ -191,7 +193,7 @@ class Custom_Multisite_Signups {
 	 * @filter hook returns array of field names.
 	 */
 	public function save_extra_profile_fields( $user_id ) {
-	
+
 		//if ( ! current_user_can( 'add_users' ) ) { return false; }
 		$extra_fields = array();
 		$extra_fields = apply_filters( 'cms_save_extra_profile_fields', $extra_fields );
