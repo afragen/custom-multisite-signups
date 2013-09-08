@@ -1,15 +1,15 @@
 <?php
 
 /*
-Plugin Name: Custom Multisite Signups Extras
-Description: This plugin adds custom registration data using hooks to the Custom Multisite Signups plugin.
+Plugin Name:       Custom Multisite Signups Extras
 Requires at least: 3.4
-Tested up to: 3.6
-Version: 0.1.0
-Author: Andy Fragen
-Author URI: http://thefragens.com
-License: GNU General Public License v2
-License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Tested up to:      3.6
+Version:           0.1.0
+Author:            Andy Fragen
+Author URI:        http://thefragens.com
+License:           GNU General Public License v2
+License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Description: This plugin adds custom registration data using hooks to the <a href="https://github.com/afragen/custom-multisite-signups">Custom Multisite Signups</a> plugin.
 */
 
 class Custom_Mulitsite_Signups_Extras {

@@ -1,17 +1,18 @@
 <?php
 
 /*
-Plugin Name: Custom Multisite Signups
-Plugin URI: https://github.com/afragen/custom-multisite-signups
+Plugin Name:       Custom Multisite Signups
+Plugin URI:        https://github.com/afragen/custom-multisite-signups
 GitHub Plugin URI: https://github.com/afragen/custom-multisite-signups
+GitHub Branch:     master
 Description: This plugin adds custom registration data and maybe other things to WP Mulitsite.
 Requires at least: 3.4
-Tested up to: 3.6
-Version: 0.1.0
-Author: Andy Fragen
-Author URI: http://stsps.org
-License: GNU General Public License v2
-License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Tested up to:      3.6
+Version:           0.1.0
+Author:            Andy Fragen
+Author URI:        http://thefragens.com
+License:           GNU General Public License v2
+License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
 //Load plugin
