@@ -1,11 +1,11 @@
 === Custom Multisite Signups ===
 Contributors: afragen
 Requires at least: 3.4
-Tested up to: 3.6
+Tested up to: 3.9.1
 Plugin URI: https://github.com/afragen/custom-multisite-signups
 GitHub Plugin URI: https://github.com/afragen/custom-multisite-signups
 Stable tag: master
-Version: 0.1.0
+Version: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,6 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * Initial commit
 

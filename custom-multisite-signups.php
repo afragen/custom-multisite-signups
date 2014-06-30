@@ -3,23 +3,21 @@
 /*
 Plugin Name:       Custom Multisite Signups
 Plugin URI:        https://github.com/afragen/custom-multisite-signups
-GitHub Plugin URI: https://github.com/afragen/custom-multisite-signups
-GitHub Branch:     master
 Description: This plugin adds custom registration data and maybe other things to WP Mulitsite.
-Requires at least: 3.4
-Tested up to:      3.6
-Version:           0.1.0
 Author:            Andy Fragen
 Author URI:        http://thefragens.com
+Requires at least: 3.4
+Tested up to:      3.9.1
+Version:           0.2.0
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+GitHub Plugin URI: afragen/custom-multisite-signups
+GitHub Branch:     master
 */
 
 //Load plugin
 new Custom_Multisite_Signups();
 
-if ( class_exists( 'Custom_Multisite_Signups_Extras' ) )
-	new Custom_Multisite_Signups_Extras();
 
 class Custom_Multisite_Signups {
 
